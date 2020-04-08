@@ -1,1 +1,5 @@
 1. Set Mongo DB URI at the config/default json for dev environment and config/production for production environment
+2. Middleware is for authentication and is not rendered in client so it cannot be interfere or get from client
+3. Models is for the set up of user schema so that it has specific schema for the database
+4. Routes is for the response when hitting the route, example /api/users what does the server return. You will handle that in the Routes
+5. Server.js

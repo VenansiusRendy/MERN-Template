@@ -1,12 +1,14 @@
 import React, { Fragment, useContext } from 'react';
+// Import React Bootstrap
+import { Navbar, Nav } from 'react-bootstrap';
+// Import Font Awesome
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // Import PropTypes
 import PropTypes from 'prop-types';
-// Import React Inner Link instead of using a tag
-import { Link } from 'react-router-dom';
 // Imoprt Auth Context
 import AuthContext from '../../context/auth/authContext';
 
-const Navbar = ({ title, icon }) => {
+const NavBar = ({ title, icon }) => {
   // Initialize auth Context
   const authContext = useContext(AuthContext);
   // Initialize contact Context
@@ -18,40 +20,50 @@ const Navbar = ({ title, icon }) => {
   // Show for authenticated
   const authLinks = (
     <Fragment>
-      <li>Hello {user && user.name}</li>
-      <li>
-        <a onClick={onLogout} href='#!'>
-          <i className='fas fa-sign-out-alt'></i>{' '}
-          <span className='hide-sm'>Logout</span>
-        </a>
-      </li>
+      <Nav.Link style={{ pointerEvents: 'none' }}>
+        Hello {user && user.name}
+      </Nav.Link>
+      <Nav.Link onClick={onLogout} href='#!'>
+        <FontAwesomeIcon icon='sign-out-alt' />
+        <i className='fas fa-sign-out-alt'></i>{' '}
+        <span className='hide-sm'>Logout</span>
+      </Nav.Link>
     </Fragment>
   );
   // Show for guests
   const guestLinks = (
     <Fragment>
-      <li>
-        <Link to='/register'>Register</Link>
-      </li>
-      <li>
-        <Link to='/login'>Login</Link>
-      </li>
-      <li>
-        <Link to='/about'>About</Link>
-      </li>
+      <Nav.Link href='/register'>Register</Nav.Link>
+      <Nav.Link href='/login'>
+        <FontAwesomeIcon icon='sign-in-alt' />
+        <i className='fas fa-sign-in-alt'></i> Login
+      </Nav.Link>
+      <Nav.Link href='/about'>About</Nav.Link>
     </Fragment>
   );
   return (
-    <div className='navbar bg-primary'>
-      <h1>
-        <i className={icon} /> {title}
-      </h1>
-      {/* Menu Layout */}
-      <ul>
-        {/* Check For Authentication */}
-        {isAuthenticated ? authLinks : guestLinks}
-      </ul>
-    </div>
+    <Navbar bg='primary' expand='lg' variant='light'>
+      <Navbar.Brand href='#home'>React-Bootstrap</Navbar.Brand>
+      <Navbar.Toggle aria-controls='basic-navbar-nav' />
+      <Navbar.Collapse id='basic-navbar-nav'>
+        <Nav className='ml-auto'>
+          {/* Check For Authentication */}
+          {isAuthenticated ? authLinks : guestLinks}
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
+
+    // <Navbar className='navbar navbar-expand-lg navbar-light bg-primary'>
+    //   <NavbarBrand href='#'>MERN Template</NavbarBrand>
+    //   <NavbarToggler onClick={toggleNavbar} className='mr-2' />
+    //   {/* Menu Layout */}
+    //   <Collapse isOpen={!collapsed} navbar>
+    //     <Nav navbar>
+    //       {/* Check For Authentication */}
+    //       {isAuthenticated ? authLinks : guestLinks}
+    //     </Nav>
+    //   </Collapse>
+    // </Navbar>
   );
 };
 // Proptypes defination
@@ -61,7 +73,7 @@ Navbar.propTypes = {
 };
 // Default proptypes
 Navbar.defaultProps = {
-  title: 'Contact Keeper',
-  icon: 'fas fa-id-card-alt',
+  title: 'MERN Template',
+  icon: '',
 };
-export default Navbar;
+export default NavBar;

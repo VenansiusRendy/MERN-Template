@@ -1,8 +1,11 @@
 import React, { Fragment } from 'react';
+// Import Font Awesome
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faSignInAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 // Import React Router
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // Import Navbar Component
-import Navbar from './components/layout/Navbar';
+import NavBar from './components/layout/NavBar';
 // Import Home Component
 import Home from './components/pages/Home';
 // Import About Component
@@ -21,12 +24,13 @@ import AuthState from './context/auth/AuthState';
 import AlertState from './context/alert/AlertState';
 // Import Set Auth Token for default headers
 import setAuthToken from './utils/setAuthToken';
-import './App.css';
+import './App.scss';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
-
+// Initialize FontAwesome
+library.add(faSignOutAlt, faSignInAlt);
 const App = () => {
   return (
     // Wrap everything in the contact state so we can use anything in the stat and do not need prop drilling
@@ -34,7 +38,7 @@ const App = () => {
       <AlertState>
         <Router>
           <Fragment>
-            <Navbar />
+            <NavBar />
             <div className='container'>
               <Alerts />
               <Switch>

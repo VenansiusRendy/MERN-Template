@@ -1,4 +1,4 @@
 {
-  "mongoURI": "",
-  "jwtSecret": ""
+  "mongoURI": "mongodb+srv://rendy123:rendy123@recipebook-i8vzd.gcp.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "secret"
 }

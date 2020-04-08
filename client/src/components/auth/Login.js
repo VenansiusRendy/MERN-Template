@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import AlertContext from '../../context/alert/alertContext';
 import AuthContext from '../../context/auth/authContext';
+// Import From Bootstrap
+import { Form, Row, Col } from 'react-bootstrap';
 
 const Login = (props) => {
   // Init context
@@ -52,42 +55,56 @@ const Login = (props) => {
   };
 
   return (
-    <div className='form-container'>
+    <div className='container-form m-auto'>
       {/* Heading */}
-      <h1>
+      <h1 className='text-center my-5'>
         Account <span className='text-primary'>Login</span>
       </h1>
       {/* Login Form */}
-      <form onSubmit={onSubmit}>
+      <Form onSubmit={onSubmit}>
         {/* Email */}
-        <div className='form-group'>
-          <label htmlFor='email'>Email</label>
-          <input
-            type='email'
-            name='email'
-            value={email}
-            onChange={onChange}
-            required
-          />
-        </div>
+        <Form.Group as={Row} className='py-2'>
+          <Form.Label htmlFor='email' column sm='2'>
+            Email
+          </Form.Label>
+          <Col sm='10'>
+            <Form.Control
+              name='email'
+              type='email'
+              value={email}
+              onChange={onChange}
+              required
+              placeholder='Enter Email'
+            />
+          </Col>
+        </Form.Group>
         {/* Password */}
-        <div className='form-group'>
-          <label htmlFor='password'>Password</label>
-          <input
-            type='password'
-            name='password'
-            value={password}
-            onChange={onChange}
-            required
-          />
-        </div>
-        {/* Submit Button */}
+        <Form.Group as={Row} className='py-2'>
+          <Form.Label htmlFor='password' column sm='2'>
+            Password
+          </Form.Label>
+          <Col sm='10'>
+            <Form.Control
+              name='password'
+              type='password'
+              value={password}
+              onChange={onChange}
+              required
+              placeholder='Enter Password'
+            />
+          </Col>
+        </Form.Group>
+        {/* Login Button */}
         <input
           type='submit'
           value='Login'
-          className='btn btn-primary btn-block'
+          className='btn btn-primary btn-block my-2'
         />
-      </form>
+        {/* Register Button */}
+        <Link to='/register' className='btn btn-danger btn-block my-2'>
+          Register
+        </Link>
+      </Form>
     </div>
   );
 };
