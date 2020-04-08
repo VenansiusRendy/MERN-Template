@@ -24,8 +24,7 @@ const NavBar = ({ title, icon }) => {
         Hello {user && user.name}
       </Nav.Link>
       <Nav.Link onClick={onLogout} href='#!'>
-        <FontAwesomeIcon icon='sign-out-alt' />
-        <i className='fas fa-sign-out-alt'></i>{' '}
+        <FontAwesomeIcon icon='sign-out-alt' />{' '}
         <span className='hide-sm'>Logout</span>
       </Nav.Link>
     </Fragment>
@@ -35,8 +34,7 @@ const NavBar = ({ title, icon }) => {
     <Fragment>
       <Nav.Link href='/register'>Register</Nav.Link>
       <Nav.Link href='/login'>
-        <FontAwesomeIcon icon='sign-in-alt' />
-        <i className='fas fa-sign-in-alt'></i> Login
+        <FontAwesomeIcon icon='sign-in-alt' /> Login
       </Nav.Link>
       <Nav.Link href='/about'>About</Nav.Link>
     </Fragment>

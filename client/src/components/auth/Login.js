@@ -101,7 +101,7 @@ const Login = (props) => {
           className='btn btn-primary btn-block my-2'
         />
         {/* Register Button */}
-        <Link to='/register' className='btn btn-danger btn-block my-2'>
+        <Link to='/register' className='btn btn-secondary btn-block my-2'>
           Register
         </Link>
       </Form>

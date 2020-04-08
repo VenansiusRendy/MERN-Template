@@ -1,7 +1,11 @@
 import React, { Fragment } from 'react';
 // Import Font Awesome
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faSignInAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import {
+  faSignInAlt,
+  faSignOutAlt,
+  faInfoCircle,
+} from '@fortawesome/free-solid-svg-icons';
 // Import React Router
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // Import Navbar Component
@@ -30,7 +34,7 @@ if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
 // Initialize FontAwesome
-library.add(faSignOutAlt, faSignInAlt);
+library.add(faSignOutAlt, faSignInAlt, faInfoCircle);
 const App = () => {
   return (
     // Wrap everything in the contact state so we can use anything in the stat and do not need prop drilling
